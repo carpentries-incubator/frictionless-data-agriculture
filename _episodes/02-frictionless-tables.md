@@ -10,9 +10,9 @@ objectives:
 - "Learn the Frictionless Table Schema and how it is used to describe a tabular dataset."
 - "Import a table and infer metadata about."
 - "Edit table metadata."
-   - Add additional column properties
-   - Identify primary key columns
-   - Add a foreign key to create a relationship with another tables."
+- "Add additional column properties."
+- "Identify primary key columns."
+- "Add a foreign key to create a relationship with another tables."
 - "Validate a tables data"
 
 keypoints:
