@@ -1,36 +1,19 @@
 # FIXME Lesson title
-
+Frictionless Data for Agricultural Research 
 [![Create a Slack Account with us](https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg)](https://swc-slack-invite.herokuapp.com/)
 
 **Thanks for contributing to The Carpentries Incubator!**
-This repository provides a blank starting point for lessons to be developed here.
 
-A member of the [Carpentries Curriculum Team](https://carpentries.org/team/)
-will work with you to get your lesson listed on the
-[Community Developed Lessons page][community-lessons]
-and make sure you have everything you need to begin developing your new lesson.
+Frictionless Data is a progressive framework for building data infrastructure. Frictionless can do:
+- data management
+- data integration
+- data flows 
 
-## What to do next
+Frictionless allows users to describe data using a straightforward syntax. Frictionless describes a datasets as a collection of one or more data tables having rows and columns. Frictionless provides metadata to describe columns, tables and a dataset.
 
-Before you begin developing your new lesson,
-here are a few things we recommend you do:
+This lesson teaches the principles of Frictionless Data, and the basics of how to create, use and transform Frictionless data.
 
-* [ ] Decide on a title for your new lesson!
-  Once you've chosen a new title, you can set the value for `lesson_title`
-  in [`_config.yml`](_config.yml)
-* [ ] Add the URL to your built lesson pages to the repository description\*
-* [ ] Fill in the fields marked `FIXME` in:
-  * this README
-  * [`_config.yml`](_config.yml)
-* [ ] If you're going to be developing lesson material for the first time
-  according to our design principles,
-  consider reading the [Carpentries Curriculum Development Handbook][cdh]
-* [ ] Consult the [Lesson Example][lesson-example] website to find out more about
-  working with the lesson template
-* [ ] If you are planning to write your lesson in RMarkdown,
-  [create a `main` branch and set this as the default branch in your repository settings][change-default-branch]
-* [ ] Update this README with relevant information about your lesson
-  and delete this section
+This lesson uses example data from Agricultural field experiments and is directly relevant to agricultural scientists and ecologists.
 
 
 \* To set the URL on GitHub, click the gear wheel button next to **About**
@@ -60,10 +43,7 @@ Look for the tag ![good_first_issue](https://img.shields.io/badge/-good%20first%
 
 Current maintainers of this lesson are
 
-* FIXME
-* FIXME
-* FIXME
-
+* Richard Ostler @richardostler
 
 ## Authors
 

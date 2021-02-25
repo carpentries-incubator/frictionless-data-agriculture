@@ -3,11 +3,15 @@ title: "Introduction"
 teaching: 0
 exercises: 0
 questions:
-- "Key question (FIXME)"
+- "What will I learn during this workshop?"
+- "What are the tools that I will be using?"
+- "How will learning to use Frictionless Data benefit me?"
 objectives:
-- "First learning objective. (FIXME)"
+- "Learn how Frictionless Data can benefit me."
 keypoints:
-- "First key point. Brief Answer to questions. (FIXME)"
+- "The Data Curator tool can be used for simple data package creation."
+- "The Frictionless Python library provides a more powerful tool for using and manipulating Frictionless Data."
+- "Frictionless data can make it easier to share well described data supported by appropriate metadata."
 ---
 FIXME
 
