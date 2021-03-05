@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "Frictionless Tables"
 teaching: 0
 exercises: 0
 questions:
