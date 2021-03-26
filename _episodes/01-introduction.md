@@ -95,5 +95,8 @@ The datasets we'll need are:
 > What extra information could you provide to make this dataset meet FAIR data principles?
 {: .discussion}
 
+## Goals ##
+Over the following lesson episodes we will document and combine the three datasets above into a Frictionless Data Package and use the Frictionless python libraries to write a pipeline for combing and transforming the data. Along the way, we will also understand how Frictionless Data can be used to support FAIR data.
+
 {% include links.md %}
 
