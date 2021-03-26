@@ -1,5 +1,4 @@
-# FIXME Lesson title
-Frictionless Data for Agricultural Research 
+# Frictionless Data for Agricultural Research 
 [![Create a Slack Account with us](https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg)](https://swc-slack-invite.herokuapp.com/)
 
 **Thanks for contributing to The Carpentries Incubator!**
