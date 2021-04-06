@@ -54,36 +54,14 @@ A well described dataset means a dataset is accompanied by **metadata**. Metadat
 
 Frictionless allows us to capture all this infomration or metadata using a standard JSON metadata schema. 
 
-## Frictionless Data and FAIR Data ##
-FAIR stands for Findable, Accessible, Interoperable and Reusable and provides an important set of guiding principles for creating reusable datasets.  
+## The Dataset ##
 
-Using Frictionless can help you to create datasets that meet some of the key principles of the FAIR data principles. Using Frictionles can meet 10 of the 15 FAIR guiding principles. These are:
-- F1. (Meta)data are assigned a globally unique and persistent identifier 
-- F2. Data are described with rich metadata
-- F3. Metadata clearly and explicitly include the identifier they describe
-- I1. (Meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation.  
-- I2. (Meta)data use vocabularies that follow FAIR principles
-- I3. (Meta)data include qualified references to other (meta)data
-- R1. (Meta)data are richly described with a plurality of accurate and relevant attributes
-- R1.1. (Meta)data are released with a clear and accessible data usage license
-- R1.2. (Meta)data are associated with detailed provenance
-- R1.3. (Meta)data meet domain-relevant community standards
+The data we will be using is based on real agricultural field experiments conducted at [Rothamsted Research](https://www.rothamsted.ac.uk/), UK. The field experiments we will be using are small plot experiment comparing yields for different varieties of wheat. Wheat variety is therefore our main treatment factor. The experiment is randomised with replication meaning each plot grows one variety of wheat and each variety is grown on multiple plots with varieties allocated to plots at random.   
 
-In future lessons we will see where Frictionless data is used to support these FAIR data principles.
-
-## The Datasets ##
-
-The data we will be using is a time-series from the Rothamsted Broadballk Winter Wheat long-term experiment. This is a real dataset that has been used in 100s of publications. We've simplified it for the workshop but you can download the [full dataset](http://www.era.rothamsted.ac.uk/). 
-
-> ## Broadbalk ##
->
-> The Broadbalk experiment was established in 1843 at Rothamsted, Hertforshire in the UK. It is still running today and is now officially the world's longest running agricultural experiment. The experiment is organised into plots which grow wheat either as a monocrop or in rotation with other crops. Each plot has diffetent treatments for comparing the effects of different fertilizers and of with-holding herbicides or fungicides on yield. 
-{: .callout}
-
-The datasets we'll need are:
-- plots.csv
-- yields.csv
-- nutrients.csv
+The dataset has the following three files:
+1. experiment.csv
+2. varieties.csv
+3. yields.csv
 
 > ## Review the datasets ##
 >
@@ -92,11 +70,11 @@ The datasets we'll need are:
 > - Do you understand the table contents 
 > - Are you confident in re-using this data
 >
-> What extra information could you provide to make this dataset meet FAIR data principles?
+> What extra information could you provide to make this dataset easier to use for other researchers?
 {: .discussion}
 
 ## Goals ##
-Over the following lesson episodes we will document and combine the three datasets above into a Frictionless Data Package and use the Frictionless python libraries to write a pipeline for combing and transforming the data. Along the way, we will also understand how Frictionless Data can be used to support FAIR data.
+Over the following lesson episodes we will see how Frictionless Data can be used to support FAIR data, learn how Frictionless data packages are structured and describe tabular datasets and use the Frictionless python libraries to convert our three CSV files into a Frictionless Tabular Data Package.
 
 {% include links.md %}
 
