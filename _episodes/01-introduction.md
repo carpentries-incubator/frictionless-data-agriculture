@@ -7,14 +7,13 @@ questions:
 - "What are the tools that I will be using?"
 - "How will learning to use Frictionless Data benefit me?"
 objectives:
-- "Understand the principles Frictionless Data for tabular datasets" 
+- "Understand the principles of Frictionless Data for tabular datasets." 
 - "Understand how Frictionless Data can benefit me."
-- "Understand how Frictionless Data relates to FAIR data."
+- "Have a general understanding of what Frictionless Data can do."
 keypoints:
-- "Frictionless can be used to create well described datasets."
-- "Other researchers can more easily re-use well described datasets."
-- "Frictionless datasets can help you to apply FAIR data principles."
-- "Frictionless libraries can be used to build powerful workflows using Frictionless datasets." 
+- "Frictionless can be used to create well described datasets that can be more easily re-used by other researchers."
+- "Metadata is used to describe a dataset."
+- "Frictionless uses a simple JSON syntax for providing structured metadata."  
 ---
 
 ## Motivation ##
@@ -27,9 +26,9 @@ Frictionless uses a suite of simple patterns to describe and organize tabular da
 
 Frictionless Data can also be combined with supporting Frictionless code libraries to build powerful workflows for extracting, transforming and loading data.
 
-Frictionless uses CSV to store data and JSON schemas to describe data and datasets.
+Frictionless uses CSV to store data. Each CSV file represents a table having columns and rows. JSON schemas are used to describe data, tables and datasets.
 
-Frictionless Data made available as a Frictionless Data Package. A Data Packages is composed of tabular CSV data files and a JSON metadata file. The data package can also include other files in in any format such as images, PDFs, video.  
+A Frictionless Dataset is distributed as a Frictionless Data Package. A Data Packages is composed of tabular CSV data files and a JSON metadata file. The data package can also include other files in any format such as images, PDFs, video.  
 
 ### Frictionless Data is well described data ### 
 > ## Why is creating well described data important?
@@ -52,11 +51,13 @@ A well described dataset means a dataset is accompanied by **metadata**. Metadat
 - Keywords to help dataset categorisation and discovery.
 - The names of people involved in the creation of the dataset. 
 
-Frictionless allows us to capture all this infomration or metadata using a standard JSON metadata schema. 
+Frictionless allows us to capture all this information or metadata using a standard JSON metadata schema. 
 
 ## The Dataset ##
 
-The data we will be using is based on real agricultural field experiments conducted at [Rothamsted Research](https://www.rothamsted.ac.uk/), UK. The field experiments we will be using are small plot experiment comparing yields for different varieties of wheat. Wheat variety is therefore our main treatment factor. The experiment is randomised with replication meaning each plot grows one variety of wheat and each variety is grown on multiple plots with varieties allocated to plots at random.   
+The data we will be using is based on real agricultural field experiments conducted at [Rothamsted Research](https://www.rothamsted.ac.uk/), UK. The field experiments we will be using are small plot experiment for comparing different varieties of wheat. Wheat variety is therefore our main treatment factor. The experiment is randomised with replication meaning each plot grows one variety of wheat and each variety is grown on multiple plots with varieties allocated to plots at random. 
+
+For each plot the yield is recorded and logged to a yields.csv file. Other information for the experiment such as name, harvest area, harvest machine and varieties used is recorded in other CSV files.  
 
 The dataset has the following three files:
 1. experiment.csv
@@ -72,6 +73,13 @@ The dataset has the following three files:
 >
 > What extra information could you provide to make this dataset easier to use for other researchers?
 {: .discussion}
+
+## Frictionless Python Module ##
+The Frictionless Python module is used for creating, editing, reading and manipulating Frictionless Data. The module is split into X parts with the following uses:
+1.
+2.  
+
+In the following lessons we will be using the `describe` functions to create a schema and add metadata to it.
 
 ## Goals ##
 Over the following lesson episodes we will see how Frictionless Data can be used to support FAIR data, learn how Frictionless data packages are structured and describe tabular datasets and use the Frictionless python libraries to convert our three CSV files into a Frictionless Tabular Data Package.

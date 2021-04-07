@@ -13,9 +13,13 @@ keypoints:
 ---
 
 ## Frictionless Data and FAIR Data ##
-FAIR stands for Findable, Accessible, Interoperable and Reusable and provides an important set of guiding principles for creating reusable datasets.  
+FAIR stands for Findable, Accessible, Interoperable and Reusable and provides an important set of guiding principles for creating reusable datasets. The FAIR data principles are being widely adopted across the research community for improving re-use of datasets
 
-Using Frictionless can help you to create datasets that meet some of the key principles of the FAIR data principles. Using Frictionles can meet 10 of the 15 FAIR guiding principles. These are:
+Frictionless is intended to create well described and re-usable datasets and this objective aligns strongly with the FAIR Data Principles. Therefore before we start creating our first Frictionless Data Package lets identify the FAIR Data principles we can meet by using Frictionless Data.    
+
+For more information on the FAIR Data Principles visit [GO-FAIR](https://www.go-fair.org/).
+
+FAIR has 15 principles and using Frictionles we can meet 10 of them, These are:
 - F1. (Meta)data are assigned a globally unique and persistent identifier 
 - F2. Data are described with rich metadata
 - F3. Metadata clearly and explicitly include the identifier they describe
@@ -27,7 +31,15 @@ Using Frictionless can help you to create datasets that meet some of the key pri
 - R1.2. (Meta)data are associated with detailed provenance
 - R1.3. (Meta)data meet domain-relevant community standards
 
-For more information on the FAIR Data Principles visit [GO-FAIR](https://www.go-fair.org/).
+> ## What do these 10 principles tell us about the Frictionless schema  
+>
+> The Frictionless schema   
+>
+> > ## Solution
+> > 
+> > 
+> {: .solution}
+{: .challenge}
 
 In future lessons we will see where Frictionless data is used to support these FAIR data principles.
 

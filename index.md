@@ -9,17 +9,16 @@ Frictionless Data is a progressive framework for building data infrastructure. F
 - data integration
 - data flows 
 
-Frictionless allows you to describe datasets as a collection of one or more data tables having rows and columns using a straightforward syntax. 
+Frictionless allows you to describe datasets as a collection of one or more data tables, each having rows and columns, using a straightforward syntax. A described dataset can then be packaged and distribited as Frictionless Tabular Data Package. 
 
-This lesson aims to teach researchers the basic concepts and skills for using the Frictionless Data format to describe and package tabular data. The lesson uses a tabular agricultural field experiment dataset and teaches data description and metadata and data manipulation using the Frictionless Python modules.
+This lesson aims to teach researchers the basic concepts and skills for using the Frictionless Data format to describe and package tabular data. The lesson uses a tabular dataset for an agricultural field experiment and teaches data description and metadata and data manipulation using the Frictionless Python modules.
 
 After completing this lesson you will:
-1. Understand the concept and principles of Frictionless Data
+1. Understand the concept and structure of a Frictionless Tabular Data Package 
 2. Understand how Frictionless Data relates to FAIR Data   
 3. Use Python to describe tables and columns
 4. Use Python to create a Frictionless Data Package
 5. Use Python to read a data package 
-
 
 This lesson uses example data from Agricultural field experiments and is directly relevant to agricultural scientists and ecologists.
 
@@ -33,11 +32,11 @@ This lesson uses example data from Agricultural field experiments and is directl
 {: .prereq}
 
 > ## Prerequisites
-> This lesson requires *Python 3.x*. A Jupyter Notebook is recommended for following the lesson exercises and saving work.
+> This lesson requires *Python 3.x*. 
 > 
-> You should be familiar with CSV, tabular data and have and understanding of JSON.
+> A Jupyter Notebook is recommended for following the lesson exercises and saving work.
+> 
+> You should be familiar with CSV, tabular data and have an understanding of JSON.
 {: .prereq}
 
 {% include links.md %}
-
-
