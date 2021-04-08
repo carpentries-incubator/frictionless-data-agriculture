@@ -4,38 +4,47 @@ teaching: 0
 exercises: 0
 questions:
 - "What is a Frictionless Table Schema?"
-- "How can I create a Frictionless Table Schema?"
-- "What can I do with a Frictionless table?"
+- "How can I create and edit a Frictionless Table Schema?"
 objectives:
 - "Learn the Frictionless Table Schema and how it is used to describe a tabular dataset."
 - "Import a table and infer metadata about."
 - "Edit table metadata."
 - "Add additional column properties."
-- "Identify primary key columns."
-- "Add a foreign key to create a relationship with another tables."
-- "Validate a tables data"
 
 keypoints:
 - "First key point. Brief Answer to questions. (FIXME)"
 ---
+In this lesson we will be working with the Frictionless Python module and CSV (comma separated) data files. Each CSV file represents a table in our dataset. For each file, the first row is the header row and provides the names of the table fields. All following rows are data.
+
 ## Introducing the Frictionless Table Schema
 
-The Frictionless Table Schema is a simple format for describing a table and is expressed as JSON.
+The Frictionless Table Schema is a simple format for describing a table using JSON. The schema has properties for describing information about the table and an array property listing the tables fields. 
 
-The schema describes the properties of a tabular dataset. Tabular data consists of a set of rows and a set of fields (columns). In this lesson we will be working with CSV (comma separated) formatted files. In these files, the first row is the header row and provides the names of the tables fields.
+### Why do we need the Table Schema? ###
 
-While CSV is a simple way of formatting tabular data, it only tells us the name of a field. To use the table we might need to know other information, or metadata, about the fields such as the fields data type. The Frictionless Table Schema allows us to provide this field metadata.
+While CSV is a simple and effective way for providing tabular data, it only tells us the name of a field. To use the table we might need to know other information, or metadata, about the fields such as the fields data type, i.e. is it text, an integer, a decimal or a date. The Frictionless Table Schema allows us to provide this metadata for the tables fields. 
 
-> ## Describing tabular data fields
+Providing additional metadata for our tables means we can improve them in three important ways:
+1. We can provide validation rules for quality checking the data.
+2. We can provide additional information to describe the fields and data. This make it easier to re-use the data.
+3. We can add semantic annotations to fields to improve their interoperability with other datasets.
+
+> ## FAIR Data Principle
+> 
+> Providing additional metadata to describe our tables helps us to meet FAIR data principles for interoperability and reuse of data
 >
+{: .callout}
+
+> ## Discussion
+> 
 > What other information could you provide to describe fields in a table?
 >
 {: .discussion}
 
 ## Describing our first table
-We are going to use Python to describe our first CSV table. 
+We are going to use the Frictionless Python module to describe our first CSV table. 
 
-Start Python and import the Frictionless module's `describe` function. As we'll be working with JSON and python dictionary data data structures we will also import the PrettyPrinter module to return more readable data. 
+Start Python or a new Jupyter Notebook and import the Frictionless module's `describe` function. As we'll be working with JSON and python dictionary data structures we will also import the PrettyPrinter module to return more readable dictionary data. 
 
 ~~~
 from frictionless import describe
@@ -73,7 +82,7 @@ This should output the following JSON table schema.
 ~~~
 {: .output}
 
-If we look at the output we can see the Frictionless `describe` function has created basic table metadata, such as the name, identified the relative location. The function has identified all the table fields and, by sampling the data rows, inferred the data type for each field.
+If we look at the output we can see the Frictionless `describe` function has automatically *inferred* basic table and field metadata, such as the name and relative path of the file and all table fields. The `describe` function also samples the data rows to infer the data type for each field.
 
 > ## Describe the varieties and experiments files
 >
@@ -157,21 +166,86 @@ pp.pprint(schema)
 
 > ## Add field descriptors for the varieties and experiments tables
 >
-> Using the code for adding field descriptors to the yields table as an example, use the information below to add field descriptors to the varieties and experiments table schemas.  
+> Using the code for adding field descriptors to the yields table as an example, use the information below to add field descriptors to the experiments table schema.  
 >
 > #### experiments
 >
 > | field name | title | description |
 > |------------|-------|-------------|
-> | expt_code | Experiment Code | Institute standard code for a field experiment. |
+> | expt_code | Experiment Code | A unique institute standard code for a field experiment. |
 > | harvest_machine | Harvest machine | Type of machine used to harvest plots. | 
 > | harvest_width | Harvest Width | Width of the area harvested in metres. |
 > | harvest_length | Harvest Length | Length of the area harvested in metres. |
 >  
 > > ## Solution
 > > ~~~
+> > yields_schema.schema.get_field("expt_code").title = "Experiment Code"
+> > yields_schema.schema.get_field("expt_code").description = "A unique Institute standard code for a field experiment."
 > > 
+> > yields_schema.schema.get_field("harvest_machine").title = "Harvest machine"
+> > yields_schema.schema.get_field("harvest_machine").description = "Type of machine used to harvest plots."
 > > 
+> > yields_schema.schema.get_field("harvest_width").title = "Harvest Width"
+> > yields_schema.schema.get_field("harvest_width").description = "Width of the area harvested in metres."
+> >
+> > yields_schema.schema.get_field("harvest_length").title = "Harvest Length"
+> > yields_schema.schema.get_field("harvest_length").description = "Length of the area harvested in metres."
+> > 
+> > pp.pprint(schema)
+> > ~~~
+> > {: .language-python}
+> > 
+> {: .solution}
+{: .challenge}
+
+### Adding constraint field descriptors to the table schema
+
+We can also add constraint field descriptors to our table schema. Constraints are used to validation and quality check the data, for example, by checking numeric fields are within a certain range.
+
+Frictionless define the following field constraints
+
+| Constraint name | type | usage |
+|-----------------|------|-------|
+| required | True or False |Indicates the field __must__ have a value. |
+| unique | True or False | Indicates all values in the field __must__ be unique and not repeated. |
+| minLength | integer | A number indicating the minimum length for text. |
+| maxLength | integer | A number indicating the maximum length for text. |
+| minimum | integer | A number indicating the minimum value for a number or date. |
+| maximum | integer | A number indicating the maximum value for a number or date. |
+| pattern | string | A regular expression defining the format of allowed values. For example experiment codes must follow a specified institute format. |
+| enum | array | A list of allowed values. All values in a field must be from this list. |
+
+Constraint properties can be added to fields in the same way that we have just edited the title and description properties for experiments table schema. 
+
+> ## Exercise 
+> Challenge: Complete the following  for the varieties and experiments tables
+>
+> Using the code for adding field descriptors to the yields table as an example, use the information below to add field descriptors to the experiments table schema.  
+>
+> #### experiments
+>
+> | field name | title | description |
+> |------------|-------|-------------|
+> | expt_code | Experiment Code | A unique institute standard code for a field experiment. |
+> | harvest_machine | Harvest machine | Type of machine used to harvest plots. | 
+> | harvest_width | Harvest Width | Width of the area harvested in metres. |
+> | harvest_length | Harvest Length | Length of the area harvested in metres. |
+>  
+> > ## Solution
+> > ~~~
+> > yields_schema.schema.get_field("expt_code").title = "Experiment Code"
+> > yields_schema.schema.get_field("expt_code").description = "A unique Institute standard code for a field experiment."
+> > 
+> > yields_schema.schema.get_field("harvest_machine").title = "Harvest machine"
+> > yields_schema.schema.get_field("harvest_machine").description = "Type of machine used to harvest plots."
+> > 
+> > yields_schema.schema.get_field("harvest_width").title = "Harvest Width"
+> > yields_schema.schema.get_field("harvest_width").description = "Width of the area harvested in metres."
+> >
+> > yields_schema.schema.get_field("harvest_length").title = "Harvest Length"
+> > yields_schema.schema.get_field("harvest_length").description = "Length of the area harvested in metres."
+> > 
+> > pp.pprint(schema)
 > > ~~~
 > > {: .language-python}
 > > 
