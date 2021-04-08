@@ -18,9 +18,9 @@ FAIR stands for Findable, Accessible, Interoperable and Reusable and provides an
 
 For more information on the FAIR Data Principles visit [GO-FAIR](https://www.go-fair.org/).
 
-FAIR has 15 principles and using Frictionles we can meet 10 of them, These are:
+FAIR has 15 principles and using Frictionless we can meet 10 of them, These are:
 - F1. (Meta)data are assigned a globally unique and persistent identifier
-- I1. (Meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation.  
+- I1. (Meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation
 - I2. (Meta)data use vocabularies that follow FAIR principles
 - R1. (Meta)data are richly described with a plurality of accurate and relevant attributes
 - R1.1. (Meta)data are released with a clear and accessible data usage license
@@ -45,21 +45,21 @@ The Frictionless Data Package Schema uses the JSON format to store metadata and 
 
 Frictionless allows us to annotate data using controlled vocabularies that also follow FAIR principles. 
 
-### (Meta)data are richly described with a plurality of accurate and relevant attributes ###
+### R1. (Meta)data are richly described with a plurality of accurate and relevant attributes ###
 
-It is much easier for researchers to re-use data if they can understand a dataset and make a decision whether or not it is useful for them. To help the researcher make this decision you should metadata that richly describe the data. Here pluraility means includinng as much information as possible so that a researcher can confidently re-use the data. The Frictionless Data Package Schema provides standard metadata properties which allows us to provide rich metadata for a dataset. 
+It is much easier for researchers to re-use data if they can understand a dataset and make a decision whether or not it is useful for them. To help the researcher make this decision you should metadata that richly describe the data. Here plurality means including as much information as possible so that a researcher can confidently re-use the data. The Frictionless Data Package Schema provides standard metadata properties which allows us to provide rich metadata for a dataset. 
 
-### - R1.1. (Meta)data are released with a clear and accessible data usage license ###
+### R1.1. (Meta)data are released with a clear and accessible data usage license ###
 
 The Frictionless Data Package Schema has a property called `licences` which allows us include a licence outlining the conditions under which the dataset can be re-used. For example a Creative Commons Attribution Licence could be applied to indicate users must credit the dataset in any publications which use it. 
 
 ### R1.2. (Meta)data are associated with detailed provenance ###
 
-The Frictionless Data Package Schema has a property called `sources` which allows us to identify other sources of data. This can be used to show provenance of the data. We can also use other schema properties to provide text information about the provencene of the data, such as location and timing of data collection.
+The Frictionless Data Package Schema has a property called `sources` which allows us to identify other sources of data. This can be used to show provenance of the data. We can also use other schema properties to provide text information about the provenance of the data, such as location and timing of data collection.
 
 ### R1.3. (Meta)data meet domain-relevant community standards ###
 
-Although the Frictionless Data Package Schema defines several standard metadata properties these are very general. Frictionless allows us to add other properties for describing the dataset. For example, we could use agreed community properties such as `temporal` and `location` to decribe the time and place that a dataset was generated. 
+Although the Frictionless Data Package Schema defines several standard metadata properties these are very general. Frictionless allows us to add other properties for describing the dataset. For example, we could use agreed community properties such as `temporal` and `location` to describe the time and place that a dataset was generated. 
 
 In future lessons we will see where Frictionless data is used to support these FAIR data principles.
 

@@ -27,7 +27,7 @@ While CSV is a simple and effective way for providing tabular data, it only tell
 
 Providing additional metadata for our tables means we can improve them in three important ways:
 1. We can provide validation rules for quality checking the data.
-2. We can provide additional information to describe the fields and data. This make it easier to re-use the data.
+2. We can provide additional information to describe the fields and data. This makes it easier to re-use the data.
 3. We can add semantic annotations to fields to improve their interoperability with other datasets.
 
 > ## FAIR Data Principle
@@ -45,7 +45,7 @@ Providing additional metadata for our tables means we can improve them in three 
 ## Describing our first table
 We are going to use the Frictionless Python module to describe our first CSV table. 
 
-Start Python or a new Jupyter Notebook and import the Frictionless module's `describe` function. As we'll be working with JSON and python dictionary data structures we will also import the PrettyPrinter module to return more readable dictionary data. 
+Start Python or a new Jupyter Notebook and import the Frictionless module's `describe` function. As we'll be working with JSON and Python dictionary data structures we will also import the PrettyPrinter module to return more readable dictionary data. 
 
 ~~~
 from frictionless import describe
@@ -55,7 +55,7 @@ pp = pprint.PrettyPrinter(depth=4)
 ~~~
 {: .language-python}
 
-Next we'll describe the yields.csv file using the `describe` function to generate a frictionless table schema and print the results.
+Next we'll describe the yields.csv file using the `describe` function to generate a Frictionless table schema and print the results.
 
 ~~~
 yields_schema = describe("data/yields.csv")
@@ -256,7 +256,7 @@ pp.pprint(yields_schema)
 
 ### Adding constraint field descriptors to the table schema
 
-We can also add constraint field descriptors to our table schema. Constraints are used to validation and quality check the data, for example, by checking numeric fields are within a certain range.
+We can also add constraint field descriptors to our table schema. Constraints are used to validate and quality check the data, for example, by checking numeric fields are within a certain range.
 
 Frictionless define the following field constraints
 
@@ -274,7 +274,7 @@ Frictionless define the following field constraints
 Constraint properties can be added to fields in the same way that we have just edited the title and description properties for experiments table schema. 
 
 > ## Exercise 
-> Challenge: Complete the code to add additional constratints
+> Challenge: Complete the code to add additional constraints
 >
 > Complete the code so that:
 > 1. Experiment code is unique.  

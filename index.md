@@ -9,7 +9,7 @@ Frictionless Data is a progressive framework for building data infrastructure. F
 - data integration
 - data flows 
 
-Frictionless allows you to describe datasets as a collection of one or more data tables, each having rows and columns, using a straightforward syntax. A described dataset can then be packaged and distribited as Frictionless Tabular Data Package. 
+Frictionless allows you to describe datasets as a collection of one or more data tables, each having rows and columns, using a straightforward syntax. A described dataset can then be packaged and distributed as Frictionless Tabular Data Package. 
 
 This lesson aims to teach researchers the basic concepts and skills for using the Frictionless Data format to describe and package tabular data. The lesson uses a tabular dataset for an agricultural field experiment and teaches data description and metadata and data manipulation using the Frictionless Python modules.
 

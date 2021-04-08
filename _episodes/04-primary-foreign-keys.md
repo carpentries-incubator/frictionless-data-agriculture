@@ -11,7 +11,7 @@ objectives:
 keypoints:
 - "Frictionless allows you to define table fields as primary keys and foreign keys and create relationships between them"
 ---
-So far we have used the Frictionless Data Table Schema to add metadata to the fields in our dataset table. Using The table schema we can also define primary and foreign key relationships between the tables in our dataset, similar to an SQL database.
+So far we have used the Frictionless Data Table Schema to add metadata to the fields in our dataset table. Using the table schema we can also define primary and foreign key relationships between the tables in our dataset, similar to an SQL database.
 
 The primary key is a field which uniquely identifies every record in a table. The foreign key is a field in one table that refers to a primary key in another table.
 

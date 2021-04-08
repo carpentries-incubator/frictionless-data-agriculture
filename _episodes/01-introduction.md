@@ -55,7 +55,7 @@ Frictionless allows us to capture all this information or metadata using a stand
 
 ## The Dataset ##
 
-The data we will be using is based on real agricultural field experiments conducted at [Rothamsted Research](https://www.rothamsted.ac.uk/), UK. The field experiments we will be using are small plot experiment for comparing different varieties of wheat. Wheat variety is therefore our main treatment factor. The experiment is randomised with replication meaning each plot grows one variety of wheat and each variety is grown on multiple plots with varieties allocated to plots at random. 
+The data we will be using are based on real agricultural field experiments conducted at [Rothamsted Research](https://www.rothamsted.ac.uk/), UK. The field experiments we will be using are small plot experiments for comparing different varieties of wheat. Wheat variety is therefore our main treatment factor. The experiments are randomised with replication meaning each plot grows one variety of wheat and each variety is grown on multiple plots with varieties allocated to plots at random. 
 
 For each plot the yield is recorded and logged to a yields.csv file. Other information for the experiment such as name, harvest area, harvest machine and varieties used is recorded in other CSV files.  
 
