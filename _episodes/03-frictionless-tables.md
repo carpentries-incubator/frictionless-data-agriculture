@@ -7,12 +7,13 @@ questions:
 - "How can I create and edit a Frictionless Table Schema?"
 objectives:
 - "Learn the Frictionless Table Schema and how it is used to describe a tabular dataset."
-- "Import a table and infer metadata about."
-- "Edit table metadata."
-- "Add additional column properties."
-
+- "Import a table and infer metadata about it using Python."
+- "Understand the Field Descriptor options for describing table fields."
+- "Use Python to edit the Field Descriptors for fields in our dataset."
 keypoints:
-- "First key point. Brief Answer to questions. (FIXME)"
+- "The Frictionless Table Schema allows us to describe metadata for a table using JSON."
+- "The Frictionless python module `describe` function is used to import a file as a table and infer information about it."
+- "Using the Frictionless python module we can edit the Table Schema's Field Descriptors." 
 ---
 In this lesson we will be working with the Frictionless Python module and CSV (comma separated) data files. Each CSV file represents a table in our dataset. For each file, the first row is the header row and provides the names of the table fields. All following rows are data.
 
@@ -31,7 +32,7 @@ Providing additional metadata for our tables means we can improve them in three 
 
 > ## FAIR Data Principle
 > 
-> Providing additional metadata to describe our tables helps us to meet FAIR data principles for interoperability and reuse of data
+> Providing additional metadata to describe our tables helps us to meet FAIR data principles for reuse of data.
 >
 {: .callout}
 
@@ -58,7 +59,7 @@ Next we'll describe the yields.csv file using the `describe` function to generat
 
 ~~~
 yields_schema = describe("data/yields.csv")
-pp.pprint(schema)
+pp.pprint(yields_schema)
 ~~~
 {: .language-python}
 
@@ -84,7 +85,9 @@ This should output the following JSON table schema.
 
 If we look at the output we can see the Frictionless `describe` function has automatically *inferred* basic table and field metadata, such as the name and relative path of the file and all table fields. The `describe` function also samples the data rows to infer the data type for each field.
 
-> ## Describe the varieties and experiments files
+> ## Exercise
+>
+> Challenge: Describe the varieties and experiments files
 >
 > Using the code for describing the yields.csv to describe varieties.csv and experiments.csv. Assign the resulting table schemas to variables called varieties_schema and experiments_schema respectively.  
 >
@@ -106,7 +109,7 @@ We can use Python to edit the table schema to improve our metadata. We will do t
 
 ### Field Descriptors
 
-The Frictionless Table Schema uses field descriptors to provide additional information for a field. 
+The Frictionless Table Schema uses *Field Descriptors* to provide additional information for a field. 
 
 | Descriptor | How to use it | Example |
 |------------|---------------|---------|
@@ -118,7 +121,27 @@ The Frictionless Table Schema uses field descriptors to provide additional infor
 | rdfType | This is rich type or semantic type. It should be a URI for a term from a controlled vocabulary | http://purl.obolibrary.org/obo/TO_0000396 |
 | constraints | This is used to constrain the values in a field and is used for validation | required |
 
-Read the [Frictionless Field Descriptors documentation](https://specs.frictionlessdata.io/table-schema/#field-descriptors) for an indepth overview of the field descriptors.
+In the table schema, using the *hrv_date* field example above would give the following JSON definition:
+~~~
+{
+    'name': 'hrv_date',
+    'title': 'Harvest date',
+    'description': 'The date on which the crop was harvested.',
+    'type': 'date',
+    'format': 'YYYY-MM-DD'
+    'rdfType': 'http://purl.obolibrary.org/obo/TO_0000396',
+    'constraints': {'required': True}
+}
+~~~
+{: .source}
+
+Read the [Frictionless Field Descriptors documentation](https://specs.frictionlessdata.io/table-schema/#field-descriptors) for an in-depth description of the field descriptors.
+
+> ## FAIR Data Principle
+> 
+> Using the rdfType helps to improve interoperability of our dataset by annotating the field using a term or concept from a community vocabulary. In the above example we have used the Trait Ontology term for Harvest Date. This means we can more confidently link the data to other datasets that are similarly annotated, evern if the fields have different names. 
+>
+{: .callout}
 
 ### Adding field descriptors to the table schema
 
@@ -133,7 +156,7 @@ yields_schema.schema.get_field("expt_id").description = "Institute standard code
 yields_schema.schema.get_field("h_date").title = "Harvest Date"
 yields_schema.schema.get_field("h_date").description = "Date on which the plot was harvested"
 
-pp.pprint(schema)
+pp.pprint(yields_schema)
 ~~~
 {: .language-python}
 
@@ -164,7 +187,9 @@ pp.pprint(schema)
 ~~~
 {: .output}
 
-> ## Add field descriptors for the varieties and experiments tables
+> ## Exercise
+>
+> Challenge: Add field descriptors for the varieties and experiments tables
 >
 > Using the code for adding field descriptors to the yields table as an example, use the information below to add field descriptors to the experiments table schema.  
 >
@@ -179,22 +204,53 @@ pp.pprint(schema)
 >  
 > > ## Solution
 > > ~~~
-> > yields_schema.schema.get_field("expt_code").title = "Experiment Code"
-> > yields_schema.schema.get_field("expt_code").description = "A unique Institute standard code for a field experiment."
+> > experiments_schema.schema.get_field("expt_code").title = "Experiment Code"
+> > experiments_schema.schema.get_field("expt_code").description = "A unique Institute standard code for a field experiment."
 > > 
-> > yields_schema.schema.get_field("harvest_machine").title = "Harvest machine"
-> > yields_schema.schema.get_field("harvest_machine").description = "Type of machine used to harvest plots."
+> > experiments_schema.schema.get_field("harvest_machine").title = "Harvest machine"
+> > experiments_schema.schema.get_field("harvest_machine").description = "Type of machine used to harvest plots."
 > > 
-> > yields_schema.schema.get_field("harvest_width").title = "Harvest Width"
-> > yields_schema.schema.get_field("harvest_width").description = "Width of the area harvested in metres."
+> > experiments_schema.schema.get_field("harvest_width").title = "Harvest Width"
+> > experiments_schema.schema.get_field("harvest_width").description = "Width of the area harvested in metres."
 > >
-> > yields_schema.schema.get_field("harvest_length").title = "Harvest Length"
-> > yields_schema.schema.get_field("harvest_length").description = "Length of the area harvested in metres."
+> > experiments_schema.schema.get_field("harvest_length").title = "Harvest Length"
+> > experiments_schema.schema.get_field("harvest_length").description = "Length of the area harvested in metres."
 > > 
-> > pp.pprint(schema)
+> > pp.pprint(experiments_schema)
 > > ~~~
 > > {: .language-python}
 > > 
+> > ~~~
+> > {
+> > 'encoding': 'utf-8',
+> > 'format': 'csv',
+> > 'hashing': 'md5',
+> > 'name': 'experiments',
+> > 'path': 'data/experiments.csv',
+> > 'profile': 'tabular-data-resource',
+> > 'schema': {'fields': [{'description': 'A unique Institute standard code for a field experiment.',
+> >                        'name': 'expt_code',
+> >                        'title': 'Experiment Code',
+> >                        'type': 'string'},
+> >                       {'description': 'Type of machine used to harvest plots.',
+> >                        'name': 'harvest_machine',
+> >                        'title': 'Harvest machine',
+> >                        'type': 'string'},
+> >                       {'description': 'Width of the area harvested in metres.',
+> >                        'name': 'harvest_width',
+> >                        'title': 'Harvest Width',
+> >                        'type': 'number'},
+> >                       {'description': 'Length of the area harvested in metres.',
+> >                        'name': 'harvest_length',
+> >                        'title': 'Harvest Length',
+> >                        'type': 'integer'},
+> >                       {'name': 'expt_name', 
+> >                        'type': 'string'},
+> >                       {'name': 'site',
+> >                        'type': 'string'}]},
+> > 'scheme': 'file'}
+> > ~~~
+> > {: .output}
 > {: .solution}
 {: .challenge}
 
@@ -218,37 +274,81 @@ Frictionless define the following field constraints
 Constraint properties can be added to fields in the same way that we have just edited the title and description properties for experiments table schema. 
 
 > ## Exercise 
-> Challenge: Complete the following  for the varieties and experiments tables
+> Challenge: Complete the code to add additional constratints
 >
-> Using the code for adding field descriptors to the yields table as an example, use the information below to add field descriptors to the experiments table schema.  
+> Complete the code so that:
+> 1. Experiment code is unique.  
+> 2. Site must be from the list 'Brooms Barn', 'Rothamsted', 'Woburn'.
+> 3. Harvest width must be between 1 and 2 m.
+> 4. Harvest length must be between 1 and 10 m. 
 >
-> #### experiments
->
-> | field name | title | description |
-> |------------|-------|-------------|
-> | expt_code | Experiment Code | A unique institute standard code for a field experiment. |
-> | harvest_machine | Harvest machine | Type of machine used to harvest plots. | 
-> | harvest_width | Harvest Width | Width of the area harvested in metres. |
-> | harvest_length | Harvest Length | Length of the area harvested in metres. |
+> ~~~
+> experiments_schema.schema.get_field("expt_code").constraints["unique"] = _________
+>  
+> experiments_schema.schema.get_field("site").constraints["_________"] = ["Brooms Barn","Rothamsted",_________]
+> 
+> experiments_schema.schema.get_field("harvest_width").constraints["minimum"] = _________
+> experiments_schema.schema.get_field("harvest_width").constraints[""] = 2
+> 
+> _________.schema.get_field(_________).constraints[_________] = _________
+> _________.schema.get_field(_________).constraints[_________] = _________
+> 
+> pp.pprint(_________)
+> ~~~
+> {: .language-python}
 >  
 > > ## Solution
 > > ~~~
-> > yields_schema.schema.get_field("expt_code").title = "Experiment Code"
-> > yields_schema.schema.get_field("expt_code").description = "A unique Institute standard code for a field experiment."
-> > 
-> > yields_schema.schema.get_field("harvest_machine").title = "Harvest machine"
-> > yields_schema.schema.get_field("harvest_machine").description = "Type of machine used to harvest plots."
-> > 
-> > yields_schema.schema.get_field("harvest_width").title = "Harvest Width"
-> > yields_schema.schema.get_field("harvest_width").description = "Width of the area harvested in metres."
+> > experiments_schema.schema.get_field("expt_code").constraints["unique"] = True
+> >  
+> > experiments_schema.schema.get_field("site").constraints["enum"] = ["Brooms Barn","Rothamsted","Woburn"]
 > >
-> > yields_schema.schema.get_field("harvest_length").title = "Harvest Length"
-> > yields_schema.schema.get_field("harvest_length").description = "Length of the area harvested in metres."
+> > experiments_schema.schema.get_field("harvest_width").constraints["minimum"] = 1
+> > experiments_schema.schema.get_field("harvest_width").constraints["maximum"] = 2
+> >
+> > experiments_schema.schema.get_field("harvest_length").constraints["minimum"] = 1
+> > experiments_schema.schema.get_field("harvest_length").constraints["maximum"] = 10
 > > 
-> > pp.pprint(schema)
+> > pp.pprint(experiments_schema)
 > > ~~~
 > > {: .language-python}
 > > 
+> > ~~~
+> > {
+> > 'encoding': 'utf-8',
+> > 'format': 'csv',
+> > 'hashing': 'md5',
+> > 'name': 'experiments',
+> > 'path': 'data/experiments.csv',
+> > 'profile': 'tabular-data-resource',
+> > 'schema': {'fields': [{'constraints': {'unique': True},
+> >                        'description': 'A unique Institute standard code for a field experiment.',
+> >                        'name': 'expt_code',
+> >                        'title': 'Experiment Code',
+> >                        'type': 'string'},
+> >                       {'description': 'Type of machine used to harvest plots.',
+> >                        'name': 'harvest_machine',
+> >                        'title': 'Harvest machine',
+> >                        'type': 'string'},
+> >                       {'constraints': {'maximum': 2, 'minimum': 1},
+> >                        'description': 'Width of the area harvested in metres.',
+> >                        'name': 'harvest_width',
+> >                        'title': 'Harvest Width',
+> >                        'type': 'number'},
+> >                       {'constraints': {'maximum': 10, 'minimum': 1},
+> >                        'description': 'Length of the area harvested in metres.',
+> >                        'name': 'harvest_length',
+> >                        'title': 'Harvest Length',
+> >                        'type': 'integer'},
+> >                       {'name': 'expt_name', 'type': 'string'},
+> >                       {'constraints': {'enum': ['Brooms Barn',
+> >                                                 'Rothamsted',
+> >                                                 'Woburn']},
+> >                        'name': 'site',
+> >                        'type': 'string'}]},
+> > 'scheme': 'file'}
+> > ~~~
+> > {: .output}
 > {: .solution}
 {: .challenge}
 
