@@ -352,5 +352,66 @@ Constraint properties can be added to fields in the same way that we have just e
 > {: .solution}
 {: .challenge}
 
+### Handling missing values ###
+
+If our dataset has missing values we can use the Frictionless Table Schema to define how missing values are represented in the data. For example in the yields table missing yield data is represented in the grain_weight field by an `*`. However, the grain_weight field is defined in the schema as a number, therefore to prevent the Frictionless validator throwing an error, because `*` is not a number, we need to indicate the special meaning of `*`. 
+
+We can provide multiple missing value codes, so missing values are added to schema as an array. For example, the following code sets zero-length strings and * as allowed missing values for our yields table.
+
+~~~
+yields_schema.schema.missing_values = ["","*"]
+pp.pprint(yields_schema)
+~~~
+{: .language-python}
+
+~~~
+{'encoding': 'utf-8',
+ 'format': 'csv',
+ 'hashing': 'md5',
+ 'name': 'yields',
+ 'path': 'data/yields.csv',
+ 'profile': 'tabular-data-resource',
+ 'schema': {'fields': [{'description': 'A unique identifer for the plot',
+                        'name': 'plot_no',
+                        'title': 'Plot Number',
+                        'type': 'integer'},
+                       {'description': 'Institute standard code for a field '
+                                       'experiment',
+                        'name': 'expt_id',
+                        'title': 'Experiment Code',
+                        'type': 'string'},
+                       {'description': 'Date on which the plot was harvested',
+                        'name': 'h_date',
+                        'title': 'Harvest Date',
+                        'type': 'string'},
+                       {'name': 'col_y', 'type': 'integer'},
+                       {'name': 'col_x', 'type': 'integer'},
+                       {'name': 'variety', 'type': 'string'},
+                       {'name': 'grain_weight', 'type': 'number'}],
+            'foreignKeys': [{'fields': 'variety',
+                             'reference': {'fields': 'variety',
+                                           'resource': 'varieties'}},
+                            {'fields': 'expt_code',
+                             'reference': {'fields': 'expt_code',
+                                           'resource': 'experiments'}}],
+            'missingValues': ['', '*'],
+            'primaryKey': 'plot_no'},
+ 'scheme': 'file'}
+ ~~~
+ {: .output}
+
+### Adding a table description ###
+
+We have added descriptions to our table fields using the Field Descriptor, but we haven't added a description for the table. We can do this using the Tabular Data Resource `description` property.
+
+For example adding a description to the yields table:
+
+~~~
+yields_schema.description = "The yields table contains raw plot yields for each experiment plot"
+pp.pprint(yields_schema)
+~~~
+{: .language-python}
+
+
 {% include links.md %}
 
